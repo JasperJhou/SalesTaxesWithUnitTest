@@ -8,10 +8,15 @@ namespace SalesTaxes
 {
     public class ReceiptPrinter : IPrinter
     {
+        /// <summary>
+        /// Print a receipt based on the custom style
+        /// </summary>
+        /// <param name="shoppingCart"></param>
         public void PrintReceipt(ShoppingCart shoppingCart)
         {
             if (shoppingCart != null)
             {
+                //We need to manupilate string here so we use StringBuilder which is mutable string type.
                 StringBuilder receiptDetails = new StringBuilder();
                 foreach (ShoppingCartItem carItem in shoppingCart.CartItems)
                 {

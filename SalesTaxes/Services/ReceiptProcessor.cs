@@ -17,6 +17,11 @@ namespace SalesTaxes
             _shoppingCart.CartItems = new List<ShoppingCartItem>();
         }
 
+        /// <summary>
+        /// Convert user inputs into shoppingcart object
+        /// </summary>
+        /// <param name="itemList"></param>
+        /// <returns></returns>
         public ShoppingCart ProcessReceipt(List<string> itemList)
         {
             var itemToAmountMap = new Dictionary<string, int>();
@@ -37,11 +42,11 @@ namespace SalesTaxes
 
                 foreach (KeyValuePair<string, int> itemToAmount in itemToAmountMap)
                 {
-                    var result = itemToAmount.Key.Split(' ');
+                    var item = itemToAmount.Key.Split(' ');
                     var product = new Product
                     {
-                        Name = Utility.GetName(result),
-                        SalePrice = Convert.ToDecimal(result[result.Length - 1]),
+                        Name = Utility.GetProductName(item),
+                        SalePrice = Convert.ToDecimal(item[item.Length - 1]),
                         ProductType = productClassifier.ClassifyProducts(itemToAmount.Key),
                     };
                     _shoppingCart.CartItems.Add(new ShoppingCartItem

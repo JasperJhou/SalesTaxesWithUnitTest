@@ -15,6 +15,12 @@ namespace SalesTaxes
             _basicSalesTax = new BasicSalesTax();
             _importedSalesTax = new ImportedSalesTax();
         }
+
+        /// <summary>
+        /// Calculate products tax based on their tax policy
+        /// </summary>
+        /// <param name="product"></param>
+        /// <returns></returns>
         public decimal CalculateSalesTax(Product product)
         {
             var tax = 0.0m;
